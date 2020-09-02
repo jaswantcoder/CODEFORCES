@@ -1,0 +1,82 @@
+#include <bits/stdc++.h>
+#define  ll long long
+#define mp make_pair
+#define pll pair<ll,ll>
+#define pb push_back
+#define vl vector<ll>
+#define vs vector<string>
+#define vd vector<double>
+#define all(v) v.begin(),v.end()
+#define vpll vector<pll>
+#define foreach(x,s) for(_typeof(s.begin()) x=s.begin();x!=s.end();x++)
+#define vi vector<int>
+#define maxn 200005
+#define fast  ios_base::sync_with_stdio(false); cin.tie(NULL);cout.tie(NULL);
+#define db double
+#define fi first
+#define se second
+
+#define PI 3.14159265
+using namespace std;
+
+
+
+int main()
+{
+
+  fast;
+  ll t,i,j,k,T,n;
+  //cin>>T;
+  T=1;
+  for(t=1;t<=T;t++)
+  {
+       ll n;
+       cin>>n;
+
+
+
+       vector<ll> v(n);
+      for(i=0;i<n;i++)
+      {
+          cin>>v[i];
+      }
+      sort(all(v));
+      ll ans=0,cost=0,val=1,last;
+
+       for(auto it:v)
+        ans+=abs(it-1);
+
+      bool f=true;
+      while(f)
+      {
+          last=1;
+          cost=0;
+         for(auto it:v)
+         {
+             cost+=abs(it-last);
+             last*=val;
+             if(cost>ans)
+             {
+                 f=false;
+                 break;
+             }
+
+
+         }
+         val++;
+         ans=min(cost,ans);
+
+          }
+
+          ans=min(ans,cost);
+
+
+
+       cout<<ans<<endl;
+     }
+
+
+
+
+return 0;
+}
